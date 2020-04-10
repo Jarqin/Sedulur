@@ -1,0 +1,4 @@
+CETA "Hello World!!"
+
+a = "Siap 86!"
+CETA a

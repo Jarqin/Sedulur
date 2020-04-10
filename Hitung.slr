@@ -1,0 +1,13 @@
+3+2
+4-1
+3*3
+4/2
+
+CETA "Atau"
+
+a=6
+b=2
+CETA a+b
+CETA a-b
+CETA a*b
+CETA a/b
