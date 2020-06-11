@@ -1,15 +1,22 @@
 from sly import Lexer
 
 class BasicLexer(Lexer):
-    tokens = { NAME, NUMBER, STRING, PRINT }
+    tokens = { NAME, NUMBER, STRING, PRINT, IF, ELSE, THEN, EQEQ, FOR, TO }
     ignore = '\t '
 
     literals = { '=', '+', '-', '/', '*', '(', ')', ',', ';' }
 
     # Define tokens
     PRINT = r'CETA'
+    IF = r'MENAWI'
+    ELSE = f'LAEN'
+    THEN = r'DUDI'
+    FOR = r'PIKEUN'
+    TO = r'BANJUR'
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
     STRING = r'\".*?\"'
+
+    EQEQ = r'=='
 
     @_(r'\d+')
     def NUMBER(self, t):

@@ -1,0 +1,6 @@
+CETA "Menggunakan Angka"
+PIKEUN a=0 BANJUR 5 DUDI CETA a 
+
+CETA "Menggunakan Kalimat"
+
+PIKEUN a=0 BANJUR 5 DUDI CETA "Ini Kalimat " 
