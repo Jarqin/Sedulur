@@ -31,6 +31,9 @@ class BasicExecute:
         if node[0] == 'num':
             return node[1]
 
+        if node[0] == 'str':
+            return node[1]    
+            
         if node[0] == 'print':
             if node[1][0] == '"':
                 print(node[1][1:len(node[1])-1])
@@ -44,7 +47,17 @@ class BasicExecute:
             return self.walkTree(node[2][2]) 
 
         if node[0] == 'condition_eqeq':
-            return self.walkTree(node[1]) == self.walkTree(node[2])           
+            return self.walkTree(node[1]) == self.walkTree(node[2])
+
+        if node[0] == 'fun_def':
+            self.env[node[1]] = node[2]
+
+        if node[0] == 'fun_call':
+            try:
+                return self.walkTree(self.env[node[1]])
+            except LookupError:
+                print("Undefined function '%s'" % node[1])
+                return 0               
 
         if node[0] == 'add':
             return self.walkTree(node[1]) + self.walkTree(node[2])

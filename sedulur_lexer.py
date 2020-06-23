@@ -1,7 +1,7 @@
 from sly import Lexer
 
 class BasicLexer(Lexer):
-    tokens = { NAME, NUMBER, STRING, PRINT, IF, ELSE, THEN, EQEQ, FOR, TO }
+    tokens = { NAME, NUMBER, STRING, PRINT, IF, ELSE, THEN, EQEQ, FOR, TO, FUN, ARROW }
     ignore = '\t '
 
     literals = { '=', '+', '-', '/', '*', '(', ')', ',', ';' }
@@ -13,6 +13,8 @@ class BasicLexer(Lexer):
     THEN = r'DUDI'
     FOR = r'PIKEUN'
     TO = r'BANJUR'
+    FUN = r'FUNGSI'
+    ARROW = r'->'
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
     STRING = r'\".*?\"'
 
@@ -22,6 +24,10 @@ class BasicLexer(Lexer):
     def NUMBER(self, t):
         t.value = int(t.value)
         return t
+
+    @_(r'#.*')
+    def COMMENT(self, t):
+        pass    
 
     @_(r'\n+')
     def newline(self,t ):

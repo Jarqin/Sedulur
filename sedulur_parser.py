@@ -33,6 +33,14 @@ class BasicParser(Parser):
     def statement(self, p):
         return p.var_assign
 
+    @_('FUN NAME "(" ")" ARROW statement')
+    def statement(self, p):
+        return ('fun_def', p.NAME, p.statement)
+
+    @_('NAME "(" ")"')
+    def statement(self, p):
+        return ('fun_call', p.NAME)    
+
     @_('NAME "=" expr')
     def var_assign(self, p):
         return ('var_assign', p.NAME, p.expr)
